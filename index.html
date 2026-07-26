@@ -545,44 +545,90 @@
                     <p class="text-gray-500 font-medium px-2 text-sm md:text-base">Phân tích kết quả tuyển sinh vào THPT công lập của 04 trường qua 02 năm học.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    
-                    <!-- Khối biểu đồ tỷ lệ đỗ -->
-                    <div class="glass-card rounded-2xl p-5 h-full lg:col-span-7 border border-indigo-100 shadow-sm flex flex-col">
-                        <h4 class="text-sm font-bold text-center text-gray-700 mb-2">Tỷ lệ Học sinh Đậu so với Số lượng Dự thi 10 (%)</h4>
-                        <div class="chart-container flex-grow" style="height: 300px;">
-                            <canvas id="chartTuyenSinh"></canvas>
+                <!-- Khối 1: Tỷ lệ đậu -->
+                <div class="bg-slate-50/50 rounded-2xl p-5 border border-slate-100 mb-8">
+                    <h4 class="text-center font-bold text-slate-700 bg-white py-2 rounded-xl border border-slate-200 shadow-sm mb-6 max-w-md mx-auto">Tỷ lệ Đậu Tuyển sinh 10 của 04 Trường</h4>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Năm 24-25 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                            <h5 class="text-center text-sm font-bold text-slate-600 mb-4">Năm học 2024-2025</h5>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="chartTyLe24"></canvas>
+                            </div>
+                        </div>
+                        <!-- Năm 25-26 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                            <h5 class="text-center text-sm font-bold text-slate-600 mb-4">Năm học 2025-2026</h5>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="chartTyLe25"></canvas>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Khối 2: Điểm 3 môn -->
+                <div class="bg-slate-50/50 rounded-2xl p-5 border border-slate-100 mb-8">
+                    <h4 class="text-center font-bold text-slate-700 bg-white py-2 rounded-xl border border-slate-200 shadow-sm mb-6 max-w-md mx-auto">Điểm Trung bình của 03 môn Văn – Toán – Anh</h4>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Năm 24-25 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                            <h5 class="text-center text-sm font-bold text-slate-600 mb-4">Năm học 2024-2025</h5>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="chartDiem24"></canvas>
+                            </div>
+                        </div>
+                        <!-- Năm 25-26 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                            <h5 class="text-center text-sm font-bold text-slate-600 mb-4">Năm học 2025-2026</h5>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="chartDiem25"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Khối Đánh giá chuyên sâu -->
+                <div class="bg-gradient-to-br from-indigo-50 to-white p-6 md:p-8 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden mt-4">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-100 rounded-bl-full opacity-50 flex items-start justify-end p-4">
+                        <i class="fa-solid fa-clipboard-check text-indigo-400 text-3xl"></i>
+                    </div>
+                    <h4 class="font-bold text-indigo-800 text-lg md:text-xl mb-5 flex items-center gap-2 relative z-10 border-b border-indigo-200 pb-3">
+                        <i class="fa-solid fa-magnifying-glass-chart text-indigo-500"></i> Đánh giá kết quả trong 02 năm:
+                    </h4>
                     
-                    <!-- Khối nhận diện -->
-                    <div class="flex flex-col gap-6 h-full lg:col-span-5">
-                        <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl border border-indigo-100 shadow-sm transition hover:shadow-md relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-bl-full flex items-start justify-end p-3 opacity-50"><i class="fa-solid fa-chart-line text-indigo-400 text-xl"></i></div>
-                            <h4 class="font-bold text-indigo-800 text-lg mb-3 flex items-center gap-2 relative z-10">
-                                Đánh giá Thực trạng
-                            </h4>
-                            <p class="text-sm text-gray-700 text-justify leading-relaxed relative z-10">
-                                <strong>Về tỷ lệ dự thi:</strong> Trường Phạm Hữu Chí duy trì tỷ lệ học sinh dự thi thấp nhất. Sự chênh lệch này không phải là hụt hơi, mà là <strong>minh chứng rõ nét cho hiệu quả phân luồng</strong>. Học sinh tự nhận thức đúng năng lực, chủ động rẽ nhánh học nghề thay vì lao vào kỳ thi khi chưa sẵn sàng.<br/><br/>
-                                <strong>Về tỷ lệ trúng tuyển:</strong> Sự sụt giảm trong năm học 25-26 tạo khoảng cách khá lớn với các trường bạn. BGH thẳng thắn nhìn nhận đây là thách thức cần cải thiện, nhưng <strong>hoàn toàn không xem đó là thất bại trong quản lý</strong>.
-                            </p>
+                    <div class="space-y-5 text-sm md:text-[15px] text-gray-700 leading-relaxed relative z-10">
+                        <!-- Ý 1 -->
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 bg-indigo-100 text-indigo-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                            <div>
+                                <h5 class="font-bold text-gray-900 mb-1">Tỷ lệ dự thi thấp <i class="fa-solid fa-arrow-right text-gray-400 mx-1"></i> <span class="text-emerald-600">Thành công của Phân luồng</span></h5>
+                                <p class="text-justify">Việc tỷ lệ HS dự thi thấp nhất xã không phải là sự hụt hơi, mà là <strong>minh chứng rõ nét cho hiệu quả tư vấn hướng nghiệp</strong>. Học sinh đã <span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">tự nhận thức đúng năng lực</span>, chủ động rẽ nhánh sang học nghề và hệ GDTX, không lao vào kỳ thi khi chưa sẵn sàng.</p>
+                            </div>
+                        </div>
+
+                        <!-- Ý 2 -->
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 bg-indigo-100 text-indigo-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                            <div>
+                                <h5 class="font-bold text-gray-900 mb-1">Điểm số & Tỷ lệ đậu <i class="fa-solid fa-arrow-right text-gray-400 mx-1"></i> <span class="text-brand-600">Bức tranh thực tế</span></h5>
+                                <ul class="list-disc pl-5 mt-1 text-gray-600 marker:text-brand-400 space-y-1">
+                                    <li><strong>Năm 24-25 (Chỉ 50% dự thi):</strong> Điểm số vươn lên ấn tượng, hệ quả của việc làm tốt phân luồng.</li>
+                                    <li><strong>Năm 25-26 (71,08% dự thi):</strong> Khi <span class="text-brand-700 font-bold">tôn trọng tối đa nguyện vọng</span> của mọi học sinh, điểm bình quân bị ảnh hưởng, tỷ lệ trúng tuyển giảm xuống 54,24%.</li>
+                                </ul>
+                            </div>
                         </div>
                         
-                        <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-2xl border-l-4 border-red-500 shadow-sm mt-auto transition hover:shadow-md">
-                            <h4 class="font-bold text-red-800 text-lg mb-3 flex items-center gap-2">
-                                <i class="fa-solid fa-heart text-red-500"></i> Tôn chỉ "Không bỏ lại phía sau"
-                            </h4>
-                            <p class="text-sm text-gray-700 text-justify italic font-medium">
-                                "Tôn trọng tối đa nguyện vọng dự thi của học sinh, đồng hành tạo cơ hội thử sức, không áp đặt chuyển hướng đối với các em năng lực còn hạn chế. Chấp nhận kết quả khiêm tốn đong đầy nỗ lực, đảm bảo mỗi em tìm được đường đi phù hợp với chính mình."
+                        <!-- Cốt lõi -->
+                        <div class="bg-gradient-to-r from-brand-600 to-indigo-700 p-5 rounded-xl shadow-md mt-6 relative overflow-hidden transform transition-transform hover:-translate-y-1">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl transform translate-x-1/3 -translate-y-1/3"></div>
+                            <h5 class="font-black text-yellow-300 mb-3 flex items-center gap-2 uppercase tracking-wide text-sm">
+                                <i class="fa-solid fa-star"></i> Triết lý Quản trị & Giá trị Cốt lõi
+                            </h5>
+                            <p class="text-white text-justify text-[14px] md:text-[15px] leading-relaxed">
+                                Sự sụt giảm tỷ lệ trúng tuyển là thách thức, <strong>không phải là thất bại quản lý</strong>. BGH kiên định định hướng: <span class="bg-white/20 px-2 py-0.5 rounded font-bold text-yellow-100">"Đánh giá đúng năng lực, tôn trọng sự phát triển của học sinh"</span>.
+                                <br><br>
+                                Nhà trường chấp nhận một kết quả khiêm tốn nhưng đong đầy nỗ lực chân chính, không áp đặt chuyển hướng với HS còn hạn chế. <span class="text-yellow-300 font-bold uppercase tracking-tight">Trân trọng từng sự tiến bộ, đảm bảo KHÔNG HỌC SINH NÀO BỊ BỎ LẠI PHÍA SAU</span>, giúp mỗi em tìm được con đường phù hợp với năng lực và hoàn cảnh.
                             </p>
-                        </div>
-                    </div>
-
-                    <!-- Khối biểu đồ 3 môn thi -->
-                    <div class="glass-card rounded-2xl p-5 lg:col-span-12 border border-sky-100 shadow-sm mt-4">
-                        <h4 class="text-sm font-bold text-center text-gray-700 mb-2">Đối sánh Điểm thi Trung bình 3 Môn Tuyển sinh 10 (Năm học 2024-2025)</h4>
-                        <div class="chart-container" style="height: 280px;">
-                            <canvas id="chartDiem3Mon"></canvas>
                         </div>
                     </div>
                 </div>
@@ -785,71 +831,79 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
                 <!-- Nhóm 1 -->
-                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-blue-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                <div class="glass-card p-5 md:p-6 rounded-2xl border-t-4 border-t-blue-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xl mb-4 shadow-sm">
                         <i class="fa-solid fa-layer-group"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-800 mb-4">1. Nâng cao Chất lượng Toàn diện</h3>
-                    <ul class="text-sm text-gray-600 space-y-4 flex-grow">
+                    <ul class="text-[13px] md:text-sm text-gray-600 space-y-4 flex-grow">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-check-circle text-blue-500 mt-0.5"></i>
-                            <span><strong>Đổi mới giảng dạy:</strong> Đẩy mạnh ứng dụng AI trong soạn bài giảng tương tác, chấm điểm. Làm phong phú kho học liệu e-learning (LMS).</span>
+                            <span class="leading-relaxed"><strong class="text-blue-800">Đổi mới PPDH & Kiểm tra đánh giá:</strong> Lấy học sinh làm trung tâm, ứng dụng CNTT, CĐS và <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-bold">Trí tuệ nhân tạo (AI)</span> trong soạn giảng tương tác, phát triển kho học liệu LMS.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-check-circle text-blue-500 mt-0.5"></i>
-                            <span><strong>Siết chặt kỷ cương:</strong> Xây dựng "Trường học hạnh phúc, an toàn". Đổi mới sinh hoạt dưới cờ, phòng chống bạo lực học đường.</span>
+                            <span class="leading-relaxed"><strong class="text-blue-800">Kỷ cương & Đạo đức:</strong> Phối hợp chặt chẽ Nhà trường - Gia đình - Xã hội xây dựng môi trường <span class="text-blue-600 font-bold">"Trường học hạnh phúc, an toàn"</span>.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-check-circle text-blue-500 mt-0.5"></i>
-                            <span><strong>Phân loại & Hỗ trợ:</strong> Khảo sát đầu năm, xây dựng kế hoạch phụ đạo khoa học, không để học sinh hổng kiến thức.</span>
+                            <span class="leading-relaxed"><strong class="text-blue-800">Phân loại & Hỗ trợ sớm:</strong> Khảo sát đầu năm, phụ đạo khoa học nhóm học sinh hạn chế, tuyệt đối không để hổng kiến thức.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-check-circle text-blue-500 mt-0.5"></i>
-                            <span><strong>Trách nhiệm & Thi đua:</strong> Lấy việc thực hiện quy chế (lên lớp đúng giờ, trả bài đúng hạn) làm thước đo thi đua cuối năm.</span>
+                            <span class="leading-relaxed"><strong class="text-blue-800">Minh bạch trong Thi đua:</strong> Đưa việc thực hiện quy chế chuyên môn làm thước đo thi đua, tạo <span class="bg-blue-50 text-blue-700 px-1 border border-blue-200 rounded font-semibold">đòn bẩy khích lệ</span> giáo viên nỗ lực.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Nhóm 2 -->
-                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-yellow-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                <div class="glass-card p-5 md:p-6 rounded-2xl border-t-4 border-t-yellow-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
                     <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 text-xl mb-4 shadow-sm">
                         <i class="fa-solid fa-medal"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-800 mb-4">2. Bứt phá Giáo dục Mũi nhọn</h3>
-                    <ul class="text-sm text-gray-600 space-y-4 flex-grow">
+                    <ul class="text-[13px] md:text-sm text-gray-600 space-y-4 flex-grow">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-star text-yellow-500 mt-0.5"></i>
-                            <span><strong>Phát hiện sớm:</strong> Chọn lọc đội tuyển từ khối 8. Chuyển sang luyện chuyên đề bám sát đề thi. Lập các CLB Tin học, Ngoại ngữ, KHKT.</span>
+                            <span class="leading-relaxed"><strong class="text-amber-700">Phát hiện & Bồi dưỡng sớm:</strong> Chọn lọc đội tuyển từ khối 8. Chuyển phương pháp sang <span class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">luyện chuyên đề bám sát đề thi</span> các cấp.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-star text-yellow-500 mt-0.5"></i>
-                            <span><strong>Quyền lợi Giáo viên:</strong> Áp dụng nghiêm Thông tư 05/2025/TT-BGDĐT: Quy đổi 1 tiết bồi dưỡng HSG = 2.0 tiết định mức để tạo động lực.</span>
+                            <span class="leading-relaxed"><strong class="text-amber-700">Đội ngũ nòng cốt & Động lực:</strong> Phân công đúng người đúng việc. Ghi nhận cống hiến bằng TT 05/2025: <span class="text-amber-600 font-bold">1 tiết bồi dưỡng = 2.0 tiết định mức</span>.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-star text-yellow-500 mt-0.5"></i>
-                            <span><strong>Khen thưởng kịp thời:</strong> Vinh danh trang trọng, xây dựng cơ chế khen thưởng thiết thực xứng đáng với cống hiến của thầy và trò.</span>
+                            <span class="leading-relaxed"><strong class="text-amber-700">Câu lạc bộ Mũi nhọn:</strong> Thành lập, đẩy mạnh sinh hoạt các CLB NCKH, Tin học, Ngoại ngữ.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-star text-yellow-500 mt-0.5"></i>
+                            <span class="leading-relaxed"><strong class="text-amber-700">Khen thưởng kịp thời:</strong> Vinh danh, ghi nhận thành tích trang trọng, tạo cơ chế khen thưởng thiết thực xứng đáng với kết quả.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Nhóm 3 -->
-                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-purple-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                <div class="glass-card p-5 md:p-6 rounded-2xl border-t-4 border-t-purple-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
                     <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl mb-4 shadow-sm">
                         <i class="fa-solid fa-compass"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-800 mb-4">3. Hướng nghiệp & Phân luồng</h3>
-                    <ul class="text-sm text-gray-600 space-y-4 flex-grow">
+                    <ul class="text-[13px] md:text-sm text-gray-600 space-y-4 flex-grow">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-arrow-right-long text-purple-500 mt-0.5"></i>
-                            <span><strong>Tư vấn thực chất:</strong> GVCN lớp 9 kiên quyết không ép học sinh sức yếu thi vào lớp 10 công lập, tư vấn rẽ nhánh GDTX/Học nghề.</span>
+                            <span class="leading-relaxed"><strong class="text-purple-800">Tư vấn Thấu cảm & Minh bạch:</strong> Dùng <span class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold">dữ liệu điểm số thực tế</span> để phân tích giới hạn năng lực. Kiên quyết rào chắn tâm lý “ảo tưởng thành tích”, tuyệt đối không ép thi vào 10 công lập.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-arrow-right-long text-purple-500 mt-0.5"></i>
-                            <span><strong>Trải nghiệm thực tế:</strong> Kết nối CĐ Kỹ thuật CN BR-VT, Phổ thông CĐ FPT tổ chức tham quan xưởng, thay đổi định kiến học nghề.</span>
+                            <span class="leading-relaxed"><strong class="text-purple-800">Hệ sinh thái "Thực học - Thực nghiệp":</strong> Đưa HS tham quan xưởng thực hành các đối tác (CĐ KTCN BR-VT, FPT...) để định hướng ngành khát lao động (Ô tô, Điện lạnh, Đồ họa...).</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-arrow-right-long text-purple-500 mt-0.5"></i>
-                            <span><strong>Phối hợp địa phương:</strong> Cùng Đoàn Thanh niên quản lý hè, cùng Ban công tác mặt trận ấp đến từng hộ dân làm công tác tư vấn.</span>
+                            <span class="leading-relaxed"><strong class="text-purple-800">Cá nhân hóa nhóm rẽ tự do:</strong> Đóng vai trò <span class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold">nhịp cầu kết nối</span>, bàn giao HS về Đoàn xã/Mặt trận ấp để tiếp tục hỗ trợ sinh kế, không để HS bơ vơ.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-arrow-right-long text-purple-500 mt-0.5"></i>
+                            <span class="leading-relaxed"><strong class="text-purple-800">Xóa bỏ định kiến:</strong> Phối hợp hệ thống chính trị địa phương "dân vận" từng nhà, khẳng định: <span class="text-purple-600 font-bold">Học nghề không phải bước lùi mà là hướng đi vững chắc.</span></span>
                         </li>
                     </ul>
                 </div>
@@ -1152,96 +1206,116 @@
                 });
             }
 
-            // 4. Tuyển sinh 10 (Tỷ lệ đỗ 2 biểu đồ cột)
-            const ctxTuyenSinh = document.getElementById('chartTuyenSinh');
-            if(ctxTuyenSinh) {
-                new Chart(ctxTuyenSinh.getContext('2d'), {
+            // --- Màu sắc chuẩn thiết kế cho 4 trường ---
+            const colorPHC = '#0ea5e9'; // Xanh dương
+            const colorHTC = '#f59e0b'; // Cam
+            const colorMDC = '#10b981'; // Xanh lá
+            const colorVL = '#8b5cf6';  // Tím
+            const arrColors = [colorPHC, colorHTC, colorMDC, colorVL];
+
+            // Common Options cho Tỷ lệ
+            const commonTyLeOptions = {
+                responsive: true, maintainAspectRatio: false,
+                layout: { padding: { top: 30 } },
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        color: '#334155', font: { weight: 'bold', size: 12 },
+                        anchor: 'end', align: 'top', offset: 4,
+                        formatter: (val) => val + '%'
+                    }
+                },
+                scales: {
+                    y: { max: 120, grid: { color: '#f1f5f9', drawBorder: false }, ticks: { stepSize: 20 } },
+                    x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 11, color: '#64748b' } } }
+                }
+            };
+
+            // 4a. Biểu đồ Tỷ lệ đỗ 24-25
+            const ctxTyLe24 = document.getElementById('chartTyLe24');
+            if(ctxTyLe24) {
+                new Chart(ctxTyLe24.getContext('2d'), {
                     type: 'bar',
                     data: {
                         labels: ['Phạm Hữu Chí', 'Huỳnh Tịnh Của', 'Mạc Đỉnh Chi', 'Văn Lương'],
-                        datasets: [
-                            { 
-                                label: 'Tỷ lệ đỗ 24-25 (%)', 
-                                data: [100, 92.31, 100, 100], 
-                                backgroundColor: '#94a3b8', 
-                                borderRadius: 4,
-                                rawValues: ['35/35', '96/104', '84/84', '170/170']
-                            },
-                            { 
-                                label: 'Tỷ lệ đỗ 25-26 (%)', 
-                                data: [54.24, 83.09, 70.89, 89.89], 
-                                backgroundColor: '#4f46e5', 
-                                borderRadius: 4,
-                                rawValues: ['32/59', '118/142', '56/79', '169/188']
-                            }
-                        ]
+                        datasets: [{
+                            data: [100, 92.31, 100, 100],
+                            backgroundColor: arrColors,
+                            borderRadius: 4, barPercentage: 0.6
+                        }]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        layout: { padding: { top: 30 } },
-                        plugins: { 
-                            legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 10, font: {weight: 'bold', size: 12} } },
-                            tooltip: { 
-                                mode: 'index', 
-                                intersect: false,
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.dataset.label + ': ' + context.formattedValue + '% (' + context.dataset.rawValues[context.dataIndex] + ' HS)';
-                                    }
-                                }
-                            },
-                            datalabels: {
-                                color: function(context) { return context.datasetIndex === 1 ? '#4f46e5' : '#64748b'; },
-                                font: { weight: 'bold', size: 11 },
-                                anchor: 'end', align: 'top', offset: 2,
-                                formatter: function(value, context) { 
-                                    return value + '%\n(' + context.dataset.rawValues[context.dataIndex] + ')'; 
-                                },
-                                textAlign: 'center'
-                            }
-                        },
-                        scales: { 
-                            y: { beginAtZero: true, max: 120, grid: { color: '#f1f5f9' }, title: { display: false } },
-                            x: { grid: { display: false }, ticks: { font: {weight: 'bold'} } }
-                        }
-                    }
+                    options: commonTyLeOptions
                 });
             }
 
-            // 5. Biểu đồ 3 Môn thi Tuyển sinh 10
-            const ctxDiem3Mon = document.getElementById('chartDiem3Mon');
-            if(ctxDiem3Mon) {
-                new Chart(ctxDiem3Mon.getContext('2d'), {
+            // 4b. Biểu đồ Tỷ lệ đỗ 25-26
+            const ctxTyLe25 = document.getElementById('chartTyLe25');
+            if(ctxTyLe25) {
+                new Chart(ctxTyLe25.getContext('2d'), {
                     type: 'bar',
                     data: {
-                        labels: ['Toán', 'Ngữ Văn', 'Tiếng Anh'],
+                        labels: ['Phạm Hữu Chí', 'Huỳnh Tịnh Của', 'Mạc Đỉnh Chi', 'Văn Lương'],
+                        datasets: [{
+                            data: [54.24, 83.09, 70.89, 89.89],
+                            backgroundColor: arrColors,
+                            borderRadius: 4, barPercentage: 0.6
+                        }]
+                    },
+                    options: commonTyLeOptions
+                });
+            }
+
+            // Cấu hình chung cho Biểu đồ Điểm
+            const commonScoreOptions = {
+                responsive: true, maintainAspectRatio: false,
+                layout: { padding: { top: 30 } },
+                plugins: {
+                    legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 15, font: {weight: 'bold', size: 11, family: '"Be Vietnam Pro", sans-serif'} } },
+                    tooltip: { mode: 'index', intersect: false },
+                    datalabels: {
+                        color: '#334155', font: { weight: 'bold', size: 11 },
+                        anchor: 'end', align: 'top', offset: 2
+                    }
+                },
+                scales: {
+                    y: { max: 8, grid: { color: '#f1f5f9', drawBorder: false, borderDash: [5, 5] }, ticks: { stepSize: 1 } },
+                    x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 12, color: '#475569' } } }
+                }
+            };
+
+            // 5a. Biểu đồ Điểm 3 Môn 24-25
+            const ctxDiem24 = document.getElementById('chartDiem24');
+            if(ctxDiem24) {
+                new Chart(ctxDiem24.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Văn', 'Toán', 'Anh'],
                         datasets: [
-                            { label: 'Phạm Hữu Chí', data: [6.4, 4.6, 4.6], backgroundColor: '#0ea5e9', borderRadius: 4 },
-                            { label: 'Huỳnh Tịnh Của', data: [6.4, null, 5.5], backgroundColor: '#f59e0b', borderRadius: 4 },
-                            { label: 'Mạc Đỉnh Chi', data: [5.7, 4.2, 4.8], backgroundColor: '#10b981', borderRadius: 4 },
-                            { label: 'Văn Lương', data: [null, null, 6.1], backgroundColor: '#8b5cf6', borderRadius: 4 }
+                            { label: 'Phạm Hữu Chí', data: [4.6, 6.4, 4.6], backgroundColor: colorPHC, borderRadius: 2 },
+                            { label: 'Huỳnh Tịnh Của', data: [5.3, 6.4, 5.5], backgroundColor: colorHTC, borderRadius: 2 },
+                            { label: 'Mạc Đỉnh Chi', data: [4.2, 5.7, 4.8], backgroundColor: colorMDC, borderRadius: 2 },
+                            { label: 'Văn Lương', data: [5.3, 6.8, 6.1], backgroundColor: colorVL, borderRadius: 2 }
                         ]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        layout: { padding: { top: 20 } },
-                        plugins: { 
-                            legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 10, font: {weight: 'bold', size: 11} } },
-                            tooltip: { mode: 'index', intersect: false },
-                            datalabels: {
-                                color: '#1e293b',
-                                font: { weight: 'bold', size: 11 },
-                                anchor: 'end', align: 'top', offset: 2,
-                                formatter: function(value) { return value === null ? '' : value; }
-                            }
-                        },
-                        scales: { 
-                            y: { beginAtZero: true, max: 10, grid: { color: '#f1f5f9' }, title: { display: false } },
-                            x: { grid: { display: false }, ticks: { font: {weight: 'bold'} } }
-                        }
-                    }
+                    options: commonScoreOptions
+                });
+            }
+
+            // 5b. Biểu đồ Điểm 3 Môn 25-26
+            const ctxDiem25 = document.getElementById('chartDiem25');
+            if(ctxDiem25) {
+                new Chart(ctxDiem25.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Văn', 'Toán', 'Anh'],
+                        datasets: [
+                            { label: 'Phạm Hữu Chí', data: [4.6, 3.6, 3.4], backgroundColor: colorPHC, borderRadius: 2 },
+                            { label: 'Huỳnh Tịnh Của', data: [5.99, 4.45, 4.94], backgroundColor: colorHTC, borderRadius: 2 },
+                            { label: 'Mạc Đỉnh Chi', data: [4.09, 3.95, 3.65], backgroundColor: colorMDC, borderRadius: 2 },
+                            { label: 'Văn Lương', data: [6.14, 5.18, 4.91], backgroundColor: colorVL, borderRadius: 2 }
+                        ]
+                    },
+                    options: commonScoreOptions
                 });
             }
         });
