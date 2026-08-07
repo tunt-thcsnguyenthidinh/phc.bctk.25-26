@@ -552,14 +552,14 @@
                         <!-- Năm 24-25 -->
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                             <h5 class="text-center text-sm font-bold text-slate-600 mb-4">Năm học 2024-2025</h5>
-                            <div class="chart-container" style="height: 250px;">
+                            <div class="chart-container" style="height: 290px;">
                                 <canvas id="chartTyLe24"></canvas>
                             </div>
                         </div>
                         <!-- Năm 25-26 -->
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                             <h5 class="text-center text-sm font-bold text-slate-600 mb-4">Năm học 2025-2026</h5>
-                            <div class="chart-container" style="height: 250px;">
+                            <div class="chart-container" style="height: 290px;">
                                 <canvas id="chartTyLe25"></canvas>
                             </div>
                         </div>
@@ -1093,9 +1093,15 @@
 
             const commonDatalabelsConfig = {
                 color: '#fff',
-                font: { weight: 'bold', size: 12 },
+                font: { weight: 'bold', size: 10, family: '"Be Vietnam Pro", sans-serif' },
+                anchor: 'center',
+                align: 'center',
+                rotation: -90,
+                clamp: true,
+                textStrokeColor: 'rgba(0, 0, 0, 0.3)',
+                textStrokeWidth: 1,
                 formatter: function(value, context) {
-                    if (value === 0) return '';
+                    if (!value || value === 0) return '';
                     if (context.chart.canvas.id === 'chartRenLuyen' || context.chart.canvas.id === 'chartHocTap') {
                         return value + '%';
                     }
@@ -1115,31 +1121,50 @@
                                 label: 'Năm 24-25 (%)',
                                 data: [95.54, 4.46, 0, 0],
                                 backgroundColor: '#94a3b8',
-                                borderRadius: 6
+                                borderRadius: 4,
+                                barPercentage: 0.85,
+                                categoryPercentage: 0.75
                             },
                             {
                                 label: 'Năm 25-26 (%)',
                                 data: [94.53, 5.47, 0, 0],
                                 backgroundColor: '#10b981', 
-                                borderRadius: 6
+                                borderRadius: 4,
+                                barPercentage: 0.85,
+                                categoryPercentage: 0.75
                             }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        layout: { padding: { top: 25 } },
+                        layout: { padding: { top: 20, bottom: 5 } },
                         plugins: { 
-                            legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 8 } },
+                            legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 8, font: { weight: 'bold', size: 11, family: '"Be Vietnam Pro", sans-serif' } } },
+                            tooltip: { mode: 'index', intersect: false },
                             datalabels: {
-                                ...commonDatalabelsConfig,
-                                anchor: 'end', align: 'top', offset: 4,
-                                color: function(context) { return context.datasetIndex === 1 ? '#059669' : '#475569'; }
+                                font: { weight: 'bold', size: 10, family: '"Be Vietnam Pro", sans-serif' },
+                                anchor: function(context) { return context.dataIndex === 1 ? 'end' : 'center'; },
+                                align: function(context) { return context.dataIndex === 1 ? 'top' : 'center'; },
+                                rotation: function(context) { return context.dataIndex === 1 ? 0 : -90; },
+                                offset: function(context) { return context.dataIndex === 1 ? 2 : 0; },
+                                color: function(context) {
+                                    if (context.dataIndex === 1) {
+                                        return context.datasetIndex === 1 ? '#059669' : '#475569';
+                                    }
+                                    return '#ffffff';
+                                },
+                                textStrokeColor: function(context) { return context.dataIndex === 1 ? 'transparent' : 'rgba(0, 0, 0, 0.3)'; },
+                                textStrokeWidth: function(context) { return context.dataIndex === 1 ? 0 : 1; },
+                                formatter: function(value) {
+                                    if (!value || value === 0) return '';
+                                    return value + '%';
+                                }
                             }
                         },
                         scales: { 
-                            y: { beginAtZero: true, max: 115, grid: { color: '#f1f5f9' } },
-                            x: { grid: { display: false } }
+                            y: { beginAtZero: true, max: 115, grid: { color: '#f1f5f9' }, ticks: { stepSize: 20 } },
+                            x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 11, color: '#475569' } } }
                         }
                     }
                 });
@@ -1156,31 +1181,51 @@
                             {
                                 label: 'Năm 24-25 (%)',
                                 data: [26.46, 34.54, 36.77, 2.23],
-                                backgroundColor: '#cbd5e1',
-                                borderRadius: 6
+                                backgroundColor: '#94a3b8',
+                                borderRadius: 4,
+                                barPercentage: 0.85,
+                                categoryPercentage: 0.75
                             },
                             {
                                 label: 'Năm 25-26 (%)',
                                 data: [34.11, 34.90, 30.21, 0.78],
                                 backgroundColor: '#0ea5e9',
-                                borderRadius: 6
+                                borderRadius: 4,
+                                barPercentage: 0.85,
+                                categoryPercentage: 0.75
                             }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        layout: { padding: { top: 20, bottom: 5 } },
                         plugins: { 
-                            legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 8 } },
+                            legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 8, font: { weight: 'bold', size: 11, family: '"Be Vietnam Pro", sans-serif' } } },
+                            tooltip: { mode: 'index', intersect: false },
                             datalabels: {
-                                ...commonDatalabelsConfig,
-                                align: 'end', anchor: 'end', offset: -2,
-                                color: function(context) { return context.datasetIndex === 1 ? '#0369a1' : '#64748b'; }
+                                font: { weight: 'bold', size: 10, family: '"Be Vietnam Pro", sans-serif' },
+                                anchor: function(context) { return context.dataIndex === 3 ? 'end' : 'center'; },
+                                align: function(context) { return context.dataIndex === 3 ? 'top' : 'center'; },
+                                rotation: function(context) { return context.dataIndex === 3 ? 0 : -90; },
+                                offset: function(context) { return context.dataIndex === 3 ? 2 : 0; },
+                                color: function(context) {
+                                    if (context.dataIndex === 3) {
+                                        return context.datasetIndex === 1 ? '#0284c7' : '#475569';
+                                    }
+                                    return '#ffffff';
+                                },
+                                textStrokeColor: function(context) { return context.dataIndex === 3 ? 'transparent' : 'rgba(0, 0, 0, 0.3)'; },
+                                textStrokeWidth: function(context) { return context.dataIndex === 3 ? 0 : 1; },
+                                formatter: function(value) {
+                                    if (!value || value === 0) return '';
+                                    return value + '%';
+                                }
                             }
                         },
                         scales: { 
-                            y: { beginAtZero: true, max: 45, grid: { color: '#f1f5f9' } },
-                            x: { grid: { display: false } }
+                            y: { beginAtZero: true, max: 45, grid: { color: '#f1f5f9' }, ticks: { stepSize: 10 } },
+                            x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 11, color: '#475569' } } }
                         }
                     }
                 });
@@ -1233,21 +1278,64 @@
             const colorMDC = '#10b981'; // Xanh lá
             const colorVL = '#8b5cf6';  // Tím
 
-            // 4. Biểu đồ Tỷ lệ Đỗ Tuyển sinh 10
+            // 4. Biểu đồ Tuyển sinh 10 (Hoàn thành THCS, Số lượng dự thi và Tỷ lệ đậu)
             const commonTyLeOptions = {
-                responsive: true, maintainAspectRatio: false,
-                layout: { padding: { top: 30 } },
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: { padding: { top: 15, bottom: 5 } },
                 plugins: {
-                    legend: { display: false },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            boxWidth: 8,
+                            padding: 12,
+                            font: { weight: 'bold', size: 11, family: '"Be Vietnam Pro", sans-serif' }
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                let val = context.parsed.y;
+                                if (context.datasetIndex === 0 || context.datasetIndex === 1) {
+                                    return ' ' + label + ': ' + val + ' HS';
+                                }
+                                return ' ' + label + ': ' + val + '%';
+                            }
+                        }
+                    },
                     datalabels: {
-                        color: '#334155', font: { weight: 'bold', size: 12 },
-                        anchor: 'end', align: 'top', offset: 4,
-                        formatter: (val) => val + '%'
+                        anchor: 'center',
+                        align: 'center',
+                        rotation: -90,
+                        clamp: true,
+                        color: '#ffffff',
+                        font: { weight: 'bold', size: 10, family: '"Be Vietnam Pro", sans-serif' },
+                        textStrokeColor: 'rgba(0, 0, 0, 0.25)',
+                        textStrokeWidth: 1,
+                        formatter: function(val, context) {
+                            if (val === null || val === undefined) return '';
+                            if (context.datasetIndex === 0 || context.datasetIndex === 1) {
+                                return val + ' HS';
+                            }
+                            return val + '%';
+                        }
                     }
                 },
                 scales: {
-                    y: { max: 120, grid: { color: '#f1f5f9', drawBorder: false }, ticks: { stepSize: 20 } },
-                    x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 11, color: '#64748b' } } }
+                    y: {
+                        beginAtZero: true,
+                        max: 215,
+                        grid: { color: '#f1f5f9', drawBorder: false },
+                        ticks: { stepSize: 50, font: { size: 10 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { weight: 'bold', size: 11, color: '#475569' } }
+                    }
                 }
             };
 
@@ -1257,11 +1345,32 @@
                     type: 'bar',
                     data: {
                         labels: ['Phạm Hữu Chí', 'Huỳnh Tịnh Của', 'Mạc Đỉnh Chi', 'Văn Lương'],
-                        datasets: [{
-                            data: [100, 92.31, 100, 100],
-                            backgroundColor: [colorPHC, colorHTC, colorMDC, colorVL],
-                            borderRadius: 4, barPercentage: 0.6
-                        }]
+                        datasets: [
+                            {
+                                label: 'Hoàn thành THCS (HS)',
+                                data: [70, 129, 110, 174],
+                                backgroundColor: '#0ea5e9',
+                                borderRadius: 4,
+                                barPercentage: 0.9,
+                                categoryPercentage: 0.82
+                            },
+                            {
+                                label: 'Số lượng dự thi (HS)',
+                                data: [35, 104, 84, 170],
+                                backgroundColor: '#6366f1',
+                                borderRadius: 4,
+                                barPercentage: 0.9,
+                                categoryPercentage: 0.82
+                            },
+                            {
+                                label: 'Tỷ lệ đậu (%)',
+                                data: [100, 92.31, 100, 100],
+                                backgroundColor: '#10b981',
+                                borderRadius: 4,
+                                barPercentage: 0.9,
+                                categoryPercentage: 0.82
+                            }
+                        ]
                     },
                     options: commonTyLeOptions
                 });
@@ -1273,11 +1382,32 @@
                     type: 'bar',
                     data: {
                         labels: ['Phạm Hữu Chí', 'Huỳnh Tịnh Của', 'Mạc Đỉnh Chi', 'Văn Lương'],
-                        datasets: [{
-                            data: [54.24, 83.09, 70.89, 89.89],
-                            backgroundColor: [colorPHC, colorHTC, colorMDC, colorVL],
-                            borderRadius: 4, barPercentage: 0.6
-                        }]
+                        datasets: [
+                            {
+                                label: 'Hoàn thành THCS (HS)',
+                                data: [83, 172, 105, 192],
+                                backgroundColor: '#0ea5e9',
+                                borderRadius: 4,
+                                barPercentage: 0.9,
+                                categoryPercentage: 0.82
+                            },
+                            {
+                                label: 'Số lượng dự thi (HS)',
+                                data: [59, 142, 79, 188],
+                                backgroundColor: '#6366f1',
+                                borderRadius: 4,
+                                barPercentage: 0.9,
+                                categoryPercentage: 0.82
+                            },
+                            {
+                                label: 'Tỷ lệ đậu (%)',
+                                data: [54.24, 83.09, 70.89, 89.89],
+                                backgroundColor: '#10b981',
+                                borderRadius: 4,
+                                barPercentage: 0.9,
+                                categoryPercentage: 0.82
+                            }
+                        ]
                     },
                     options: commonTyLeOptions
                 });
